@@ -1,0 +1,18 @@
+# Secret Keys
+backend/keystore.jks
+backend/src/main/resources/*.json
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+
+# Build Artifacts & Logs
+backend/target/
+frontend/.next/
+frontend/out/
+*.log
+*.lock
+
+# Dependency Folders
+frontend/node_modules/
