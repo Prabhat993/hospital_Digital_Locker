@@ -14,7 +14,7 @@ const API_BASE_URL = 'http://localhost:8080';
 
 // Component for Patient's File View
 const PatientFileView = ({ files, handleViewOrDownload, isLoading }) => (
-    <div>
+    <div className="styled-header-box">
         <h2 style={{ marginBottom: '1rem', color: 'white' }}>Your Documents</h2>
         {Array.isArray(files) && files.length > 0 ? (
             <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -60,7 +60,7 @@ const DoctorFileView = ({
 }) => (
     <>
         {/* SECTION 1: Assigned Patient Documents */}
-        <div style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '2rem', borderRadius: '8px', background: 'rgba(255,255,255,0.9)' }}>
+        <div className="styled-header-box">
             <h2>Assigned Patient Documents</h2>
             {files.assigned && Object.keys(files.assigned).length > 0 ? (
                 Object.keys(files.assigned).map(patientUid => (
@@ -101,7 +101,7 @@ const DoctorFileView = ({
         </div>
 
         {/* SECTION 2: Documents Shared With You */}
-        <div style={{ border: '1px solid #007bff', padding: '1rem', marginBottom: '2rem', borderRadius: '8px', background: 'rgba(255,255,255,0.9)' }}>
+        <div className="styled-header-box">
             <h2>Documents Shared With You</h2>
             {files.shared && files.shared.length > 0 ? (
                 <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -127,7 +127,7 @@ const DoctorFileView = ({
         </div>
 
         {/* SECTION 3: Message Inbox (UPDATED) */}
-        <div style={{ border: '1px solid #28a745', padding: '1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.9)' }}>
+        <div className="styled-header-box">
             <h2>Message Inbox</h2>
             <button 
                 onClick={() => setIsNewMessageModalOpen(true)} 
@@ -183,13 +183,7 @@ const AdminDashboard = ({
 }) => (
     <>
         {/* Section 1: Create New Users */}
-        <div style={{ 
-            border: '1px solid #ffc107', 
-            padding: '1rem', 
-            marginBottom: '2rem', 
-            borderRadius: '8px',
-            background: 'rgba(255, 193, 7, 0.1)'
-        }}>
+        <div className="styled-header-box">
             <h2 style={{ color: 'white', marginBottom: '1rem' }}>Create New User</h2>
             <input 
                 type="email" 
@@ -257,13 +251,7 @@ const AdminDashboard = ({
         </div>
 
         {/* Section 2: Assign Patient to Doctor */}
-        <div style={{ 
-            border: '1px solid #17a2b8', 
-            padding: '1rem', 
-            marginBottom: '2rem', 
-            borderRadius: '8px',
-            background: 'rgba(23, 162, 184, 0.1)'
-        }}>
+        <div className="styled-header-box">
             <h2 style={{ color: 'white', marginBottom: '1rem' }}>Assign Patient to Doctor</h2>
             <input 
                 type="text" 
@@ -315,12 +303,7 @@ const AdminDashboard = ({
         </div>
 
         {/* Section 3: Existing Assignments & Documents Dashboard */}
-        <div style={{ 
-            border: '1px solid rgba(255, 255, 255, 0.3)', 
-            padding: '1rem', 
-            borderRadius: '8px',
-            background: 'rgba(255, 255, 255, 0.05)'
-        }}>
+        <div className="styled-header-box">
             <h2 style={{ color: 'white', marginBottom: '1rem' }}>Assignments & Documents</h2>
             {adminDashboardData.length > 0 ? (
                 adminDashboardData.map(assignment => (
@@ -892,27 +875,32 @@ export default function Home() {
                 background: 'rgba(0, 0, 0, 0)',
                 borderRadius: '10px',
             }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                    <h1 style={{ color: 'white', margin: 0 }}>Hospital Digital Locker</h1>
-                    {idToken && (
-                        <button 
-                            onClick={handleLogout}
-                            style={{ 
-                                padding: '0.5rem 1rem', 
-                                backgroundColor: '#dc3545', 
-                                color: 'white', 
-                                border: 'none', 
-                                borderRadius: '4px', 
-                                cursor: 'pointer' 
-                            }}
-                        >
-                            Logout
-                        </button>
-                    )}
+                <div className="styled-header-box">
+                    <div className="logo-header-container">
+    <img src="/logo.svg" alt="Digital Locker Logo" className="logo-image" />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <h1 style={{ color: 'white', margin: 0 }}>Hospital Digital Locker</h1>
+                        {idToken && (
+                            <button 
+                                onClick={handleLogout}
+                                style={{ 
+                                    padding: '0.5rem 1rem', 
+                                    backgroundColor: '#dc3545', 
+                                    color: 'white', 
+                                    border: 'none', 
+                                    borderRadius: '4px', 
+                                    cursor: 'pointer' 
+                                }}
+                            >
+                                Logout
+                            </button>
+                        )}
+                    </div>
+                </div>
                 </div>
                 
                 {!idToken ? (
-                    <div style={{ marginBottom: '2rem' }}>
+                    <div className="styled-header-box">
                         <h2 style={{ color: 'white' }}>Sign In</h2>
                         <input 
                             type="email" 
@@ -975,13 +963,7 @@ export default function Home() {
                         </div>
 
                         {(userRole === 'admin' || userRole === 'doctor') && (
-                            <div style={{ 
-                                marginBottom: '2rem',
-                                border: '1px solid rgba(255, 255, 255, 0.3)',
-                                padding: '1rem',
-                                borderRadius: '8px',
-                                background: 'rgba(255, 255, 255, 0.05)'
-                            }}>
+                            <div className="styled-header-box">
                                 <h2 style={{ color: 'white', marginBottom: '1rem' }}>Upload Document for Patient</h2>
                                 <input 
                                     type="email" 
@@ -1067,14 +1049,7 @@ export default function Home() {
                 )}
                 
                 {idToken && (
-                    <div style={{ 
-                        marginTop: '2rem', 
-                        padding: '1rem', 
-                        border: '1px solid rgba(0, 255, 0, 0.3)', 
-                        wordBreak: 'break-all',
-                        background: 'rgba(0, 255, 0, 0.1)',
-                        borderRadius: '4px'
-                    }}>
+                    <div className="styled-header-box">
                         <b style={{display: 'block', marginBottom: '0.5rem', color: 'white'}}>Your ID Token (JWT):</b>
                         <textarea
                             readOnly
