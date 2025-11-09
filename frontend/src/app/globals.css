@@ -40,3 +40,97 @@ a {
     color-scheme: dark;
   }
 }
+
+
+
+
+/* --- NEW: Keyframe animation for the gradient pan --- */
+/* --- NEW: Keyframe animation for color rotation --- */
+@keyframes color-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* --- Keyframe animation for the text gradient pan (unchanged) --- */
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --- UPDATED: Header box with new color animation --- */
+.styled-header-box {
+  padding: 3px;
+  background: linear-gradient(135deg, #00BFFF, #FF00FF, #FF4500, #32CD32);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  
+  /* Kept the hover transition */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* NEW: Add the color rotation animation to the border */
+  animation: color-rotate 15s linear infinite; 
+}
+
+/* --- Hover effect (unchanged) --- */
+.styled-header-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* --- Inner content box styles (unchanged) --- */
+.styled-header-box h1,
+.styled-header-box h2 {
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 9px;
+  margin: 0;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+/* --- H1 text with shimmer animation (unchanged) --- */
+.styled-header-box h1 {
+  background: linear-gradient(90deg, #FF4500, #FF00FF, #00BFFF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  
+  background-size: 400% 400%;
+  animation: gradient-pan 10s ease infinite;
+}
+
+/* --- Logo and Header Container Styles (unchanged) --- */
+.logo-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 12px;
+}
+
+.logo-image {
+  height: 48px;
+  width: 48px;
+  flex-shrink: 0;
+}
+
+/* Override padding for the h1 (unchanged) */
+.logo-header-container h1 {
+  padding: 0;
+  margin: 0;
+}
